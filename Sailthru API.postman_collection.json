@@ -1,0 +1,649 @@
+{
+	"info": {
+		"_postman_id": "2296eda4-e188-419f-8f70-5203f6a91a86",
+		"name": "Sailthru API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GET User by Email",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"mhamel@sailthru.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/user?api_key={{api_key}}&format=json&json={{stringifiedRequestBody}}&sig={{sig}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "json",
+									"value": "{{stringifiedRequestBody}}"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET User by Extid",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"exitd-goes-here\",\n    \"key\": \"extid\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/user?api_key={{api_key}}&format=json&json={{stringifiedRequestBody}}&sig={{sig}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "json",
+									"value": "{{stringifiedRequestBody}}"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\"id\":\"mhamel@sailthru.com\"}",
+									"description": "JSON body for request, as specified in Sailthru's API documentation.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/user?api_key={{api_key}}&format=json&json={{stringifiedRequestBody}}&sig={{sig}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "json",
+									"value": "{{stringifiedRequestBody}}"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Job",
+			"item": [
+				{
+					"name": "Import Job from File",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\"job\":\"import\",\"list\":\"Postman Import Users\",\"signup_dates\": 0}",
+									"description": "JSON body for request. Please note \"file\" parameter is not included or necessary here as it is passed as a separate field.",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "Choose a file to upload for the Import job.",
+									"type": "file",
+									"src": "/Users/marcelhamel/Desktop/sample.csv"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/job",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Import Job from URL",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\n  \"job\":\"import\",\n  \"list\":\"list_name_here\",\n  \"url\":\"file_url_here\",\n  \"signup_dates\": 0\n}",
+									"description": "JSON body for request. URL should be publicly accessible or ",
+									"type": "text"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/job",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						},
+						"description": "This request imports CSV user data from a remote URL. Here's the JSON structure:\n\n{\n  \"job\":\"import\",\n  \"list\":\"Postman URL Import Users\",\n  \"url\":\"https://marcelhamel.com/sample.csv\",\n  \"signup_dates\": 0\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job from URL",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\n  \"job\":\"update\",\n  \"url\":\"file_url_here\",\n  \"signup_dates\": 0\n}",
+									"description": "JSON body for request. URL should be publicly accessible or ",
+									"type": "text"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/job",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						},
+						"description": "This request imports CSV user data from a remote URL. Here's the JSON structure:\n\n{\n  \"job\":\"import\",\n  \"list\":\"Postman URL Import Users\",\n  \"url\":\"https://marcelhamel.com/sample.csv\",\n  \"signup_dates\": 0\n}"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Job from File",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "Choose a file to upload for the Update job.",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\"job\":\"update\",\"signup_dates\":0}",
+									"description": "JSON body for request. Please note \"file\" parameter is not included or necessary here as it is passed as a separate field.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/job",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Content Update",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "Choose a file to upload for the Content Update job.",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\"job\":\"content_update\"}",
+									"description": "JSON body for request. Please note \"file\" parameter is not included or necessary here as it is passed as a separate field.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/job",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase Import",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"description": "Choose a file to upload for the Purchase Import job.",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\"job\":\"purchase_import\": \"convert_numeric_strings\": false}",
+									"description": "JSON body for request. Please note \"file\" parameter is not included or necessary here as it is passed as a separate field.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/job",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"job"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"var CryptoJS = require('crypto-js');",
+					"var SailthruUtil = {};",
+					"",
+					"SailthruUtil.getSignatureHash = (params, secret) => {",
+					"  var md5Hash = CryptoJS.MD5(SailthruUtil.getSignatureString(params, secret));",
+					"  return md5Hash.toString();",
+					"};",
+					"",
+					"SailthruUtil.getSignatureString = (params, secret) => {",
+					"  return secret + SailthruUtil.extractParamValues(params).sort().join('');",
+					"};",
+					"",
+					"SailthruUtil.extractParamValues = (params) => {",
+					"  var k, temp, v, values;",
+					"  values = [];",
+					"  for (k in params) {",
+					"    v = params[k];",
+					"    if (v instanceof Array) {",
+					"      temp = SailthruUtil.extractParamValues(v);",
+					"      values = values.concat(temp);",
+					"    } else if (typeof v === 'string' || typeof v === 'number') {",
+					"      values.push(v);",
+					"    } else if (typeof v === 'boolean') {",
+					"      values.push(v = v === true ? 1 : 0);",
+					"    } else {",
+					"      values = values.concat(SailthruUtil.extractParamValues(v));",
+					"    }",
+					"  }",
+					"  return values;",
+					"};",
+					"",
+					"// Check type of request in order to determine where to source JSON payload for API",
+					"if (pm.request.method == \"GET\") {",
+					"    var stringifiedRequestBody = pm.request.body.raw;",
+					"// Upload jobs have a multipart-form type",
+					"} else if (pm.request.body.mode == \"formdata\") {",
+					"    var formdata = pm.request.body.formdata;",
+					"    var formJSONField = formdata.filter(x => {",
+					"        return x.key == \"json\"",
+					"    })[0];",
+					"    var stringifiedRequestBody = formJSONField.value;",
+					"// All other POST requests are application/x-www-form-urlencoded",
+					"} else if (pm.request.body.mode == \"urlencoded\") {",
+					"    var formdata = pm.request.body.urlencoded;",
+					"    var formJSONField = formdata.filter(x => {",
+					"        return x.key == \"json\"",
+					"    })[0];",
+					"    var stringifiedRequestBody = formJSONField.value;",
+					"}",
+					"",
+					"var payload = {",
+					"  api_key: pm.environment.get('api_key'),",
+					"  format: 'json',",
+					"  json: stringifiedRequestBody",
+					"}",
+					"",
+					"pm.variables.set(\"sig\", SailthruUtil.getSignatureHash(payload, pm.environment.get('secret')));",
+					"pm.variables.set(\"stringifiedRequestBody\", stringifiedRequestBody);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
