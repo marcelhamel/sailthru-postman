@@ -178,6 +178,128 @@
 			]
 		},
 		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "GET Purchase",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"purchase_key\": \"sid\",\n    \"purchase_id\": \"purchase_id_goes_here\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/purchase?api_key={{api_key}}&format=json&json={{stringifiedRequestBody}}&sig={{sig}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"purchase"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "json",
+									"value": "{{stringifiedRequestBody}}"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Purchase",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\n    \"email\":\"user@example.com\",\n    \"items\":\n        [\n            {\n                \"qty\":2,\n                \"title\":\"Water Bottle\",\n                \"price\":1099,\n                \"id\":1234,\n                \"url\":\"https://example.com/1234/water_bottle\"\n            }\n        ]\n}",
+									"description": "JSON body for request, as specified in Sailthru's API documentation.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/purchase?api_key={{api_key}}&format=json&json={{stringifiedRequestBody}}&sig={{sig}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"purchase"
+							],
+							"query": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}"
+								},
+								{
+									"key": "format",
+									"value": "json"
+								},
+								{
+									"key": "json",
+									"value": "{{stringifiedRequestBody}}"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Job",
 			"item": [
 				{
