@@ -753,8 +753,11 @@
 					"  json: stringifiedRequestBody",
 					"}",
 					"",
-					"pm.variables.set(\"sig\", SailthruUtil.getSignatureHash(payload, pm.environment.get('secret')));",
-					"pm.variables.set(\"stringifiedRequestBody\", stringifiedRequestBody);"
+					"var signatureHash = SailthruUtil.getSignatureHash(payload, pm.environment.get('secret'));",
+					"console.log(signatureHash)",
+					"",
+					"pm.variables.set(\"sig\", signatureHash);",
+					"pm.variables.set(\"stringifiedRequestBody\", stringifiedRequestBody.replace('+','%2B'));"
 				]
 			}
 		},

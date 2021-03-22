@@ -14,7 +14,7 @@ This Postman collection is designed to demonstrate some of the more common API r
 
 ## Setting up your environment
 1. This collection references API credentials as environment variables. Before making requests with this collection, you'll first need to [create an environment in Postman](https://learning.postman.com/docs/sending-requests/managing-environments/#creating-environments).
-2. Within this environment, you'll want to setup your Sailthru API key with a key "api_key" and your secret with a key of "secret":
+2. Within this environment, you'll want to setup your Sailthru API key with a key **api_key** and your secret with a key of **secret**:
 
 ![Create A New Environment](https://media.sailthru.com/5p6/1k5/3/8/60462ea0dd264.png)
 
