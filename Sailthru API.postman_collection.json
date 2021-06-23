@@ -18,7 +18,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\":\"mhamel@sailthru.com\"\n}",
+							"raw": "{\n    \"id\":\"mhamel+production@sailthru.com\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -143,7 +143,7 @@
 							]
 						},
 						"url": {
-							"raw": "https://api.sailthru.com/user?api_key={{api_key}}&format=json&json={{stringifiedRequestBody}}&sig={{sig}}",
+							"raw": "https://api.sailthru.com/user",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -152,24 +152,6 @@
 							],
 							"path": [
 								"user"
-							],
-							"query": [
-								{
-									"key": "api_key",
-									"value": "{{api_key}}"
-								},
-								{
-									"key": "format",
-									"value": "json"
-								},
-								{
-									"key": "json",
-									"value": "{{stringifiedRequestBody}}"
-								},
-								{
-									"key": "sig",
-									"value": "{{sig}}"
-								}
 							]
 						}
 					},
@@ -689,6 +671,60 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Send",
+			"item": [
+				{
+					"name": "POST Send",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "api_key",
+									"value": "{{api_key}}",
+									"description": "API key for Sailthru account. Pulled from environment variables.",
+									"type": "text"
+								},
+								{
+									"key": "sig",
+									"value": "{{sig}}",
+									"description": "Signature hash used to authenticate requests. Calculated here by a pre-request script, but normally handled by Sailthru's client libraries.\n",
+									"type": "text"
+								},
+								{
+									"key": "format",
+									"value": "json",
+									"description": "Designates response format. Choose 'json' or 'xml'.",
+									"type": "text"
+								},
+								{
+									"key": "json",
+									"value": "{\"template\":\"V&V HTML\", \"email\":\"mhamel@sailthru.com\"}",
+									"description": "JSON body for request, as specified in Sailthru's API documentation.",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.sailthru.com/send",
+							"protocol": "https",
+							"host": [
+								"api",
+								"sailthru",
+								"com"
+							],
+							"path": [
+								"send"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -746,6 +782,8 @@
 					"    })[0];",
 					"    var stringifiedRequestBody = formJSONField.value;",
 					"}",
+					"",
+					"console.log(stringifiedRequestBody);",
 					"",
 					"var payload = {",
 					"  api_key: pm.environment.get('api_key'),",
