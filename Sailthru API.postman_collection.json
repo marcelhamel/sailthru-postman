@@ -649,7 +649,7 @@
 								},
 								{
 									"key": "json",
-									"value": "{\"job\":\"purchase_import\": \"convert_numeric_strings\": false}",
+									"value": "{\"job\":\"purchase_import\", \"convert_numeric_strings\": false}",
 									"description": "JSON body for request. Please note \"file\" parameter is not included or necessary here as it is passed as a separate field.",
 									"type": "text"
 								}
